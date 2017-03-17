@@ -13,31 +13,30 @@ class PayUBrazilPaymentFormModel extends CreditCardPaymentFormModel
 		parent::populateModelFromPost($post);
 
 
-        if (isset($post['token']))
-        {
-            $this->token = $post['token'];
-        }       
-		
+		if (isset($post['token']))
+		{
+			$this->token = $post['token'];
+		}       
+
 		if (isset($post['holderDocumentNumber']))
-        {
-            $this->holderDocumentNumber = $post['holderDocumentNumber'];
-        }
-        
+		{
+			$this->holderDocumentNumber = $post['holderDocumentNumber'];
+		}
+
 		if (isset($post['holderBusinessNumber']))
-        {
-            $this->holderBusinessNumber = $post['holderBusinessNumber'];
-        }
-        
-        if (isset($post['paymentMethod']))
-        {
-            $this->paymentMethod = $post['paymentMethod'];
-            // $this->paymentMethod = 'VISA';
-        }
-        
-        if(isset($post['installments']))
-        {
-            $this->installments = $post['installments'] ?: 1;
-        }
+		{
+			$this->holderBusinessNumber = $post['holderBusinessNumber'];
+		}
+
+		if (isset($post['paymentMethod']))
+		{
+			$this->paymentMethod = $post['paymentMethod'];
+		}
+
+		if(isset($post['installments']))
+		{
+			$this->installments = $post['installments'] ?: 1;
+		}
 
 	}
 
@@ -46,39 +45,39 @@ class PayUBrazilPaymentFormModel extends CreditCardPaymentFormModel
 	 */
 	public function rules()
 	{
-			if ($this->token)
-			{
-				return [
-					['paymentMethod, installments, holderDocumentNumber', 'required'],
-					[
-						'installments',
-						'numerical',
-						'integerOnly' => true,
-						'min'         => 1,
-						'max'         => 12
-					],
-					[
-						'paymentMethod',
-						'in',
-						'range' => [
-							'VISA',
-							'MASTERCARD',
-							'AMEX',
-							'ELO',
-							'HIPERCARD',
-							'DINERS'
-						]
-					],
+		if ($this->token)
+		{
+			return [
+				['paymentMethod, installments, holderDocumentNumber', 'required'],
+				[
+					'installments',
+					'numerical',
+					'integerOnly' => true,
+					'min'         => 1,
+					'max'         => 12
+				],
+				[
+					'paymentMethod',
+					'in',
+					'range' => [
+						'VISA',
+						'MASTERCARD',
+						'AMEX',
+						'ELO',
+						'HIPERCARD',
+						'DINERS'
+					]
+				],
 
-				];	
-			}
+			];	
+		}
 
-			if(empty($this->token) && $this->paymentMethod != 'BOLETO_BANCARIO')
-			{
-				return array_merge(parent::rules(), ['paymentMethod, installments, holderDocumentNumber', 'required']);
-			}
+		if(empty($this->token) && $this->paymentMethod != 'BOLETO_BANCARIO')
+		{
+			return array_merge(parent::rules(), ['paymentMethod, installments, holderDocumentNumber', 'required']);
+		}
 
-			return [];
+		return [];
 	}	
 
 	/**
