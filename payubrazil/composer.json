@@ -1,0 +1,13 @@
+{
+    "name": "infinauta/craftcommerce-payu-brazil",
+    "authors": [
+        {
+            "name": "Gui Rams",
+            "email": "guirams@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "infinauta/omnipay-payu-brazil" : "dev-master"
+    }
+}
