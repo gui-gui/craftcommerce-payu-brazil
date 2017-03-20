@@ -20,7 +20,13 @@ class PayUBrazilPlugin extends BasePlugin
             $this->commerceInstalled = true;
         }
 
-        // craft()->on('commerce_transactions.onSaveTransaction', [craft()->pagarme, 'updateSavedBoletoTransaction']);
+        craft()->on('commerce_payments.onBeforeGatewayRequestSend', function(Event $event) {
+            if($event->params['type'] == 'refund' || $event->params['type'] == 'capture')
+            {   
+                $parentOrderReference = craft()->payUBrazil->getParentOrderReference($event->params['transaction']);
+                $event->params['request']->setOrderReference($parentOrderReference);
+            }
+        });
 
     }
 
@@ -73,6 +79,4 @@ class PayUBrazilPlugin extends BasePlugin
         }
         return [];
     }
-
-
 }
