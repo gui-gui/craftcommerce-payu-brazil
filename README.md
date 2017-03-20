@@ -31,7 +31,7 @@ To charge via boleto - you need to send these values with the payment form:
 paymentMethod = BOLETO_BANCARIO
 ```
 
-*Boleto expires in `n` days.  `n` is defined via the payment method settings - within craft CP.*  
+*Boleto expires in `boletoDaysToExpire` days.  `boletoDaysToExpire` is defined via the payment method settings - within craft CP.*  
 
 
 ---
