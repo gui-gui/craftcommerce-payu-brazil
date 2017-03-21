@@ -55,6 +55,11 @@ class PayUBrazilPlugin extends BasePlugin
         return "Gui Rams";
     }
 
+    public function getDocumentationUrl()
+    {
+    return 'https://github.com/gui-gui/craftcommerce-payu-brazil';
+    }
+
     /**
      * Returns the plugin developer’s URL.
      *
