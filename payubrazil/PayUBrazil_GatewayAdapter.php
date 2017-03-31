@@ -50,9 +50,11 @@ class PayUBrazil_GatewayAdapter extends \Commerce\Gateways\CreditCardGatewayAdap
 	public function defineAttributes()
 	{
 		// In addition to the standard gateway config, here is some custom config that is useful.
-		$attr = parent::defineAttributes();
+        $attr = array();
 		$attr['apiKey'] = [AttributeType::String];
 		$attr['apiKey']['label'] = $this->generateAttributeLabel('apiKey');
+        $attr['publicKey'] = [AttributeType::String];
+		$attr['publicKey']['label'] = $this->generateAttributeLabel('publicKey');
 		$attr['apiLogin'] = [AttributeType::String];
 		$attr['apiLogin']['label'] = $this->generateAttributeLabel('apiLogin');
 		$attr['merchantId'] = [AttributeType::String];
