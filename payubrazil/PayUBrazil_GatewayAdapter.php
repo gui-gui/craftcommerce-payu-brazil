@@ -59,7 +59,9 @@ class PayUBrazil_GatewayAdapter extends \Commerce\Gateways\CreditCardGatewayAdap
         $attr['merchantId'] = [AttributeType::String];
         $attr['merchantId']['label'] = $this->generateAttributeLabel('merchantId');
         $attr['accountId'] = [AttributeType::String];
-        $attr['accountId']['label'] = $this->generateAttributeLabel('accountId');
+        $attr['accountId']['label'] = $this->generateAttributeLabel('accountId');        
+        $attr['apiUrl'] = [AttributeType::String];
+        $attr['apiUrl']['label'] = $this->generateAttributeLabel('apiUrl');
         $attr['boletoDaysToExpire'] = [AttributeType::Number];
         $attr['boletoDaysToExpire']['label'] = $this->generateAttributeLabel('boletoDaysToExpire');
         $attr['testMode'] = [AttributeType::Bool];
